@@ -1,0 +1,18 @@
+<form action="" (ngSubmit)="onAddNewTask()" >
+    <span>Add Task!!</span>
+
+    <div class="input_div">
+   <label for="task_due_date">Task Duedate</label>
+   <input type="date" name="enteredTaskDuedate" [(ngModel)]="enteredTaskDuedate" >
+   </div>
+
+   <div class="input_div">
+   <label for="">Task Description</label>
+   <textarea name="enteredTaskDescription" id="" rows="5" [(ngModel)]="enteredTaskDescription"></textarea>
+   </div>
+
+   <div class="form_btns">
+    <button class="cancel_btn" type="button" (click)="onCloseAddTask()">cancel</button>
+    <button type="submit" class="submit_task_btn">submit</button>
+   </div>
+</form>

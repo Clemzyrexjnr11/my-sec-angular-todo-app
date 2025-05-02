@@ -1,0 +1,60 @@
+header{
+    height: 20vh;
+    /* border: 2px solid white; */
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    position: relative;
+}
+h1{
+    font-family: Nunito;
+    color: white;
+}
+.add_new_user{
+    padding: 10px 40px;
+    border: none;
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+form{
+    height: 300px;
+    border: 2px solid white;
+    color: white;
+    font-family: Lato;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    gap: 10px;
+    /* transition: all 700ms ease; */
+}
+input{
+    height: 25px;
+    border: none;
+    padding:5px;
+    border-radius: 5px;
+}
+.form_btn_div{
+    width: 100%;
+    /* border: 2px solid white; */
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.form_btn_div button{
+    padding: 10px 40px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}

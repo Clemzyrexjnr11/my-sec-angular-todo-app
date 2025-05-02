@@ -1,0 +1,19 @@
+<div class="tasks_holder">
+    <div class="tasks_header">
+        <div>
+            <img [src]="img" alt="">
+            <span>{{name}}'s Task</span>
+        </div>
+        <div class="tasks_btns">
+            <button (click)="onRemoveUser()">Remove User</button>
+            <button (click)="onAddTask()">Add Task</button>
+        </div>
+    </div>
+  @for(task of selectedUserTask; track task.taskId){
+    <app-task [task]="task" (complete)="onCompleteTask($event)"/>
+  } 
+  @if(isAddingTask){
+  <app-add-task [userId]="userId" [(hideTask)]="isAddingTask"/>
+   
+  }
+</div>

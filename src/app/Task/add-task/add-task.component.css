@@ -1,0 +1,58 @@
+form{
+    height: wif-content;
+    width: 300px;
+    border-radius: 5px;
+    background: rgb(251, 36, 36);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+    font-family: Nunito;
+}
+.input_div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+input{
+    border: none;
+    height: 40px;
+    border-radius: 5px;
+    padding: 5px;
+}
+textarea{
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+span{
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+label{
+    font-weight: bold;
+}
+.form_btns{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+button{
+    height: 30px;
+    width: 120px;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background: #780612f8;
+    color: white;
+    cursor: pointer;
+}
+.cancel_btn{
+    background: transparent;
+}

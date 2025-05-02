@@ -1,0 +1,22 @@
+<header>
+  <h1>TODO-List</h1>
+  <button class="add_new_user" (click)="onAddNewUser()">Add New User</button>
+
+  @if(isAddingNewUser === true){
+
+  <form action="" (ngSubmit)="onsubmit(enteredusername , entereduserid)" #addUserForm="ngForm">
+    <label for="username">Username</label>
+    <input type="text" name="username" required [(ngModel)]="enteredusername" #uname />
+    <label for="userId">UserId</label>
+    <input type="number" name="userId" required [(ngModel)]="entereduserid" #uid />
+
+    <!-- this last input should contain image of user -->
+    <input type="file" name="username" />
+    <div class="form_btn_div">
+      <button type="button" (click)="onCloseAddNewUser()">cancel</button>
+      <button type="submit">submit</button>
+    </div>
+  </form>
+}
+
+</header>
