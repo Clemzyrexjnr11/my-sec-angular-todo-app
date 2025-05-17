@@ -1,35 +1,30 @@
-import { Injectable, inject } from '@angular/core';
-import { dummyTask } from './tasks/dummyTask';
-import { DUMMY_TASKS_TOKEN } from '../../main';
+import { Injectable, inject, signal} from '@angular/core';
 import { TaskModel } from './Task-model';
+import { HttpClient } from '@angular/common/http';
+import { backendurl } from '../app.config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  dummyUsersTask = inject(DUMMY_TASKS_TOKEN);
+  private httpClient = inject(HttpClient);
+  allTasks = signal<TaskModel[]>([]);
+
+  getAllTasks(){
+    return this.httpClient.get<TaskModel[]>(`${backendurl}/get-tasks`)
+  }
 
   selectedUserTask(userId: number) {
-    return this.dummyUsersTask.filter((task) => task.userId === userId);
+    return this.allTasks().filter((task)=> task.userId === userId);
   }
 
   removeTask(taskId: number) {
-    return (this.dummyUsersTask = this.dummyUsersTask.filter(
-      (task) => task.taskId !== taskId
-    ));
+     return this.httpClient.delete<TaskModel[]>(`${backendurl}/delete-task/${taskId}`)
   }
 
   addNewTask(TaskData: TaskModel) {
-    if (TaskData.taskdueDate === '') {
-      alert('please provide us with all data');
-    } else if (TaskData.taskDescription === '') {
-      alert('please provide us with all data');
-    } else
-      this.dummyUsersTask.unshift({
-        taskId: TaskData.taskId,
-        userId: TaskData.userId,
-        taskdueDate: TaskData.taskdueDate,
-        taskDescription: TaskData.taskDescription,
-      });
+   return this.httpClient.post<TaskModel[]>(`${backendurl}/add-new-task`, TaskData)
   }
+
 }
+ 

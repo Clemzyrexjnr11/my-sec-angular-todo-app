@@ -1,6 +1,6 @@
 import { TaskModel } from "../Task-model"
 
-export const dummyTask:TaskModel[] = [
+export const dummyTask = [
     {
     taskId:1,
     userId:1,

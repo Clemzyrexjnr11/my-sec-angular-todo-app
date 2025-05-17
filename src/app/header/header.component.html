@@ -4,19 +4,33 @@
 
   @if(isAddingNewUser === true){
 
-  <form action="" (ngSubmit)="onsubmit(enteredusername , entereduserid)" #addUserForm="ngForm">
+  <form action="" #addUserForm="ngForm" [formGroup]="form" (ngSubmit)="onsubmit()" >
     <label for="username">Username</label>
-    <input type="text" name="username" required [(ngModel)]="enteredusername" #uname />
-    <label for="userId">UserId</label>
-    <input type="number" name="userId" required [(ngModel)]="entereduserid" #uid />
+    <input type="text" name="username" formControlName="username" />
+    <label for="role">Role</label>
+    <select name="role" id="" formControlName="userRole">
+      <option value="ADMIN">ADMIN</option>
+      <option value="USER">USER</option>
+    </select>
+    <!-- <input type="text" name="role" formControlName="userRole" /> -->
+
+    <label for="useremail">E-mail</label>
+    <input type="email" name="useremail"  formControlName="email" />
 
     <!-- this last input should contain image of user -->
-    <input type="file" name="username" />
+
     <div class="form_btn_div">
       <button type="button" (click)="onCloseAddNewUser()">cancel</button>
-      <button type="submit">submit</button>
+      <button type="submit" [disabled]="form.invalid">submit</button>
     </div>
+
+
+    @if( form.controls.email.dirty && form.controls.email.invalid){
+      <p style="color: white;">Invalid user email !!</p>
+    }
+    @if(form.controls.username.dirty && form.controls.username.invalid){
+      <p style="color: white;">Invalid!! -must contain "&#64;" tag :)</p>
+    }
   </form>
 }
-
 </header>

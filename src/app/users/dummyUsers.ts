@@ -2,7 +2,7 @@ import { UserModel } from "./User-model"
 
 
 
-export const dummyUsers:UserModel[] = [
+export const dummyUsers = [
     {
      userId:1,
      userName:'Clement Jr',

@@ -1,10 +1,10 @@
 import { Component,EventEmitter,Input,inject,Output } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
-// import { dummyTask } from './dummyTask';
-import { DUMMY_TASKS_TOKEN } from '../../../main';
 import { TaskService } from '../task.service';
 import { AddTaskComponent } from "../add-task/add-task.component";
-// import { UserService } from '../../users/user.service';
+import { TaskModel } from '../Task-model';
+import { UserService } from '../../users/user.service';
+
 
 
 @Component({
@@ -14,33 +14,43 @@ import { AddTaskComponent } from "../add-task/add-task.component";
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
- @Input() img?:string;
  @Input() name?:string;
  @Input() userId!:number;
- @Output() remove = new EventEmitter<number>();
+ @Output () removeuser = new EventEmitter();
+ private taskService = inject(TaskService);
+ private userService = inject(UserService)
+ isAddingTask = false;
 
-
-   private taskService = inject(TaskService);
-  //  private userService = inject(UserService)
-
-   isAddingTask = false;
 
  get selectedUserTask (){
-  return this.taskService.selectedUserTask(this.userId)
+ return this.taskService.selectedUserTask(this.userId)
  }
  onCompleteTask(taskId:number){
- return this.taskService.removeTask(taskId)
+ return this.taskService.removeTask(taskId).subscribe({
+  next:(response)=> this.taskService.allTasks.set(response), 
+ })
  }
  onAddTask(){
   this.isAddingTask = true
  }
+ onAddingNewTask(newtask:TaskModel){
+    return this.taskService.addNewTask(newtask).subscribe({
+      next:(response)=> this.taskService.allTasks.set(response),
+    })
+    // console.log(newtask)
+ }
  onCloseAddTask(){
   this.isAddingTask = false;
  }
-
+  onclickArrowLeft(){
+  this.removeuser.emit()
+     
+  }
  onRemoveUser(){
-  // return this.userService.removeUser(this.userId)
+  this.removeuser.emit()
+  return this.userService.removeUser(this.userId).subscribe({
+    next:(response)=> this.userService.allusers.set(response),
+  })
 
-  this.remove.emit(this.userId);
  }
 }

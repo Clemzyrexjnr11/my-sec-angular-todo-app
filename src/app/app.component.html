@@ -1,17 +1,16 @@
-<app-header/>
+<app-header (formValue)="onAddNewUser($event)"/>
 <main>
-    <section class="main_sec">
-     <div class="users_div_holder">
-        @for( user of dummyUsers; track user.userId){
-        <app-users [img]="'assets/'+user.userImg" [user]="user" (select)="onSelectedUser($event)"/>
-           
-        }
-     </div>
-     @if(!selectedUser){
-    <p class="default_user">select a user to display user's task!!</p>
-     }@else {
-        <app-tasks [img]="selectedUserImagePath" [name]="selectedUser.userName" [userId]="selectedUser.userId" (remove)="removeSelectedUser($event)" />
-     }
+  <section class="main_sec">
+    <div class="users_div_holder">
+      @for( user of allusers(); track user.userid){
+      <app-users [user]="user" (select)="getSelectedUser($event)" />
 
-    </section>
+      }
+    </div>
+    @if(!selectedUser){
+    <p class="default_user">select a user to display user's task!!</p>
+    }@else {
+    <app-tasks [name]="selectedUser.username" [userId]="selectedUser.userid" (removeuser)="onRemoveUser()" />
+    }
+  </section>
 </main>

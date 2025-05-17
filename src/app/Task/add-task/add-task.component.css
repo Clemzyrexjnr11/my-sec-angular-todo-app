@@ -53,6 +53,10 @@ button{
     color: white;
     cursor: pointer;
 }
+button:disabled{
+    background: #b87c82f8;
+    cursor: not-allowed;
+}
 .cancel_btn{
     background: transparent;
 }

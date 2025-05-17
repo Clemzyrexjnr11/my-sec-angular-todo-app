@@ -38,6 +38,13 @@ img{
     object-fit: cover;
 
 }
+ .tasks_header div img:first-child{
+    height: 15px;
+    width: 30px;
+ }
+ .tasks_header div img:hover{
+    cursor: pointer;
+ }
 button{
     height: 40px;
     width: 150px;

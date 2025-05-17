@@ -1,7 +1,8 @@
 <div class="tasks_holder">
     <div class="tasks_header">
         <div>
-            <img [src]="img" alt="">
+          <img src="images/arrow-left.png" alt="" (click)="onclickArrowLeft()">
+            <img [src]="" alt="">
             <span>{{name}}'s Task</span>
         </div>
         <div class="tasks_btns">
@@ -9,11 +10,11 @@
             <button (click)="onAddTask()">Add Task</button>
         </div>
     </div>
-  @for(task of selectedUserTask; track task.taskId){
-    <app-task [task]="task" (complete)="onCompleteTask($event)"/>
+  @for(task of selectedUserTask; track task.taskid){
+    <app-task  [task]="task" (complete)="onCompleteTask($event)"/>
   } 
   @if(isAddingTask){
-  <app-add-task [userId]="userId" [(hideTask)]="isAddingTask"/>
+  <app-add-task [userId]="userId" [(hideTask)]="isAddingTask" (taskFormValue)="onAddingNewTask($event)"/>
    
   }
 </div>

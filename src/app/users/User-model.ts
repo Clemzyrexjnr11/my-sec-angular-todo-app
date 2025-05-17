@@ -1,5 +1,8 @@
 export interface UserModel{
-    userId:number,
-    userName:string,
-    userImg:string
+    userid:number,
+    username:string,
+    useremail:string,
+    role:string
 }
+
+

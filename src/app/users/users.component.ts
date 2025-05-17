@@ -8,13 +8,13 @@ import { UserModel } from './User-model';
   styleUrl: './users.component.css'
 })
 export class UsersComponent {
-  @Input ({required:true}) img!:string;
   @Input() user!:UserModel;
   
   @Output() select = new EventEmitter<number>();
 
   onSelect(){
-    this.select.emit(this.user.userId);
+    this.select.emit(this.user.userid);
+    
   }
 
 }

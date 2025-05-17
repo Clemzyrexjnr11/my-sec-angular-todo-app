@@ -1,6 +1,6 @@
  export type TaskModel = {
-    taskId:number,
+    taskid:number,
+    taskduedate:string,
+    taskdescription:string ,
     userId:number,
-    taskdueDate:string,
-    taskDescription:string
  }

@@ -1,26 +1,21 @@
-import { Injectable,inject } from '@angular/core';
-import { DUMMY_USERS_TOKEN } from '../../main';
+import { Injectable, inject, signal, OnInit } from '@angular/core';
 import { UserModel } from './User-model';
+import { HttpClient } from '@angular/common/http';
+import { backendurl } from '../app.config';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
-  dummyUsers = inject(DUMMY_USERS_TOKEN);
-
-  
-   getSelectedUser(selectedUserId?:number){
-    return this.dummyUsers.find((user)=> user.userId === selectedUserId)
+  private httpClient = inject(HttpClient);
+   allusers = signal<UserModel[]>([]);
+   getallUsers() {
+    return this.httpClient.get<UserModel[]>(`${backendurl}/get-users`)
+  }
+   addnewUser(user:UserModel){
+    return this.httpClient.post<UserModel[]>(`${backendurl}/add-new-user`, user)
    }
-
-   // trying to work this out
-   
-  //  selectedUserImagePath(selectedUser?:UserModel){
-  //   return 'assets/'+ selectedUser?.userImg;
-  // }
-
-   removeUser(userId:number){
-     return this.dummyUsers = this.dummyUsers.filter((user)=> user.userId !== userId)
+    removeUser(userId:number){
+      return this.httpClient.delete<UserModel[]>(`${backendurl}/delete-user/${userId}`)
    }
 }

@@ -11,6 +11,6 @@ export class TaskComponent {
   @Input ()task?:TaskModel;
   @Output() complete = new EventEmitter<number>()
   completeTask(){
-    this.complete.emit(this.task?.taskId);
+    this.complete.emit(this.task?.taskid);
   }
 }
